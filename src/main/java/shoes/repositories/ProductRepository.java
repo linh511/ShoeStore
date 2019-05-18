@@ -15,15 +15,16 @@ import shoes.entities.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer>{
-	@Query("From Product p where p.name like '%name'")
-	List<Product> findProductByName (@Param("name") String name);
+	@Query("From Product p where p.name like :search")
+	List<Product> findProductByName (@Param("search") String name);
 	
 	@Query("Select p From Product p")
-	Page<Product> findProducts(Pageable pageable);
+	List<Product> findProductByPageAble(Pageable pageable);
 	
 	@Query("From Product p ORDER BY p.id DESC")
 	List<Product> findProductAndSort();
 	
 	@Query("FROM Product p where p.category = :category")
 	List<Product> findProductByCategory(@Param("category") Category category);
+
 }

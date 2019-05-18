@@ -46,7 +46,7 @@ public class LoginController {
 					return "customer/order";
 				} else {
 					session.setAttribute("user1", user);
-					return "customer/home";
+					return "redirect:/home";
 				}
 			}
 		} else {

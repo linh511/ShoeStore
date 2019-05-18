@@ -45,11 +45,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 	}
 
-	@Override
-	public Order findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	
 

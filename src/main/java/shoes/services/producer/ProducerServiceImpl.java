@@ -42,11 +42,4 @@ public class ProducerServiceImpl implements ProducerService{
 		return false;
 	}
 
-	@Override
-	public Producer findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 }

@@ -47,13 +47,7 @@ public class CategoryServiceImpl implements CategoryService{
 		}
 	}
 
-	@Override
-	public Category findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	
 	
 
 

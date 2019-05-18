@@ -18,14 +18,9 @@
 					<div class="categories">
 						<ul>
 							<h3>Danh Mục</h3>
-							<li><a href="#">Giầy 1</a></li>
-							<li><a href="#">Giầy 1</a></li>
-							<li><a href="#">Giầy 1</a></li>
-							<li><a href="#">Giầy 1</a></li>
-							<li><a href="#">Giầy 1</a></li>
-							<li><a href="#">Giầy 1</a></li>
-							<li><a href="#">Giầy 1</a></li>
-							<li><a href="#">Giầy 1</a></li>
+							<c:forEach var="category" items="${categories}">
+								<li><a href="${pageContext.servletContext.contextPath}/product/category/${category.id}">${category.name} </a></li>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>
@@ -46,6 +41,47 @@
 				</div>
 				<div class="content_bottom">
 					<div class="section group">
+						<c:if test="${listByName!= null}">
+							<c:forEach var="product" items="${listByName}">
+								<div class="grid_1_of_4 images_1_of_4">
+									<img src="footwear/images/${product.image}" class="img-fluid" /></a>
+									<h2>${product.name}</h2>
+									<div class="price-details">
+										<div class="price-number">
+											<p>
+												<span class="rupees">${product.unitPrice} đ</span>
+											</p>
+										</div>
+										<div class="add-cart">
+											<h4>
+												<a href = "${pageContext.servletContext.contextPath}/product/view/${product.id}">Chi tiết</a>
+											</h4>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</c:if>
+
+						<c:if test="${listP!= null}">
+							<c:forEach var="product" items="${listP}">
+								<div class="grid_1_of_4 images_1_of_4">
+									<img src="footwear/images/${product.image}" class="img-fluid" /></a>
+									<h2>${product.name}</h2>
+									<div class="price-details">
+										<div class="price-number">
+											<p>
+												<span class="rupees">${product.unitPrice} đ</span>
+											</p>
+										</div>
+										<div class="add-cart">
+											<h4>
+												<a href = "${pageContext.servletContext.contextPath}/product/view/${product.id}">Chi tiết</a>
+											</h4>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</c:if>
 						<c:forEach var="product" items="${productList}">
 							<div class="grid_1_of_4 images_1_of_4">
 								<img src="footwear/images/${product.image}" class="img-fluid" /></a>

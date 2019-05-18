@@ -3,6 +3,7 @@ package shoes.services.product;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import shoes.entities.Category;
@@ -34,12 +35,7 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public Product update(Product t) {
-		Product p = findByName(t.getName());
-		if(p!= null) {
-			if(!p.getId().equals(t.getId()))
-				throw new DuplicateProductNameException();
-		}
-		return productRepository.save(p);
+		return productRepository.save(t);
 	}
 
 	@Override
@@ -54,13 +50,10 @@ public class ProductServiceImpl implements ProductService{
 		
 	}
 
-	@Override
-	public Product findByName(String name) {
-		return null;
-	}
 
 	@Override
 	public List<Product> findProductByName(String name) {
+		name = "%"+name+"%";
 		return productRepository.findProductByName(name);
 	}
 
@@ -72,6 +65,11 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Product> findByCategory(Category category) {
 		return productRepository.findProductByCategory(category);
+	}
+
+	@Override
+	public List<Product> findByPageAble(Pageable pageable) {
+		return productRepository.findProductByPageAble(pageable);
 	}
 
 

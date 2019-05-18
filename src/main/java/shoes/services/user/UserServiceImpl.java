@@ -41,11 +41,6 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
-	@Override
-	public User findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public User findUserByUsernameAndPassword(String username, String password) {

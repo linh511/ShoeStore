@@ -14,7 +14,7 @@
 			<div class="content">
 				<div class="content_top">
 					<div class="heading">
-						<h3>Kết quả tìm kiếm</h3>
+						<h3>Kết quả tìm kiếm:</h3>
 					</div>
 					<div class="heading">
 					</div>
@@ -22,7 +22,7 @@
 				</div>
                 <div class="content_bottom">
 				<div class="section group">
-					<c:forEach var="product" items="${productList}">
+					<c:forEach var="product" items="${listByName}">
 						<div class="grid_1_of_4 images_1_of_4">
 							<img src="footwear/images/${product.image}"
 								class="img-fluid" /></a>

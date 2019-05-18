@@ -14,7 +14,6 @@ public interface BaseService<T, ID extends Serializable> {
 	T update (T t);
 	
 	boolean delete (T t);
-	
-	T findByName (String name);
+
 
 }

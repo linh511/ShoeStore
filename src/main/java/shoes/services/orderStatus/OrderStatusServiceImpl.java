@@ -42,10 +42,5 @@ public class OrderStatusServiceImpl implements OrderStatusService{
 		return false;
 	}
 
-	@Override
-	public OrderStatus findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+
 }

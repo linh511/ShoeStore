@@ -2,6 +2,7 @@ package shoes.services.product;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import shoes.entities.Category;
@@ -15,4 +16,6 @@ public interface ProductService extends BaseService<Product, Integer> {
 	List<Product> findAndSortById();
 	
 	List<Product> findByCategory (Category category);
+
+	List<Product> findByPageAble (Pageable pageable);
 }
