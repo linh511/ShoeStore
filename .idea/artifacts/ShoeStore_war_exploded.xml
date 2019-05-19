@@ -14,9 +14,6 @@
           <element id="module-output" name="ShoeStore" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.0.3.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-context:5.0.7.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:2.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.0.3.RELEASE" />
@@ -40,7 +37,9 @@
           <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.1.Final" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.0.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.0.7.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:5.0.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.0.7.RELEASE" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:5.0.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.0.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:8.5.31" />
@@ -51,19 +50,6 @@
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:5.0.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.0.7.RELEASE" />
-          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-api:3.0.8" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
-          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-core:3.0.8" />
-          <element id="library" level="project" name="Maven: commons-digester:commons-digester:2.0" />
-          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.0" />
-          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.25" />
-          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-servlet:3.0.8" />
-          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-request-servlet:1.0.7" />
-          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-jsp:3.0.8" />
-          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-template:3.0.8" />
-          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-autotag-core-runtime:1.2" />
-          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-request-jsp:1.0.7" />
-          <element id="library" level="project" name="Maven: org.apache.tiles:tiles-request-api:1.0.6" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-data-jpa:2.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-aop:2.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.13" />
@@ -87,6 +73,8 @@
           <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
           <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.47" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.0.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.0.3.RELEASE" />
         </element>
       </element>
       <element id="directory" name="META-INF">

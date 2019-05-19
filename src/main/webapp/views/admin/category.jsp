@@ -25,7 +25,7 @@
 									<a class="btn btn-info btn-fill" href = "${pageContext.servletContext.contextPath}/admin/category/add">Thêm mới</a>
 								</div>
 								<br>
-								  <p style="color: red; font-style: italic;">${message }</p>
+								  <span class="messageError">${message }</span>
 								<div class="content table-responsive table-full-width">
 									<table class="table table-hover">
 										<thead>
@@ -59,6 +59,4 @@
 		</div>
 	</div>
 </body>
-
-<jsp:include page="includes/script.jsp"/>
 </html>

@@ -18,6 +18,7 @@
             %>
             <ul>
                 <li><a href="#" style="color: red;">${user1.username}</a></li>
+                <li><a href="${pageContext.request.contextPath}/register"> Đăng ký</a></li>
                 <li><a href="${pageContext.request.contextPath}/${href}"> ${action}</a></li>
             </ul>
         </div>

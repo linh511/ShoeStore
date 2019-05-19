@@ -6,4 +6,5 @@ import shoes.entities.Producer;
 import shoes.services.BaseService;
 @Service
 public interface ProducerService extends BaseService<Producer, Integer> {
+    Producer findProducerByName(String name);
 }

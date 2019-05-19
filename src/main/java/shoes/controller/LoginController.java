@@ -22,8 +22,7 @@ public class LoginController {
 	UserService userService;
 
 	@GetMapping
-	public String loginForm(ModelMap model, HttpSession session) {
-		model.addAttribute("user", new User());
+	public String loginForm(@ModelAttribute("user") User user, ModelMap model, HttpSession session) {
 		Cart cart = (Cart) session.getAttribute("cart");
 		session.setAttribute("cart", cart);
 		return "login";
@@ -34,22 +33,28 @@ public class LoginController {
 		user = userService.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
 		Cart cart = (Cart) session.getAttribute("cart");
 		if (user != null) {
-			if (user.getRole().getName().equals("admin")) {
-				session.setAttribute("user1", user);
-				return "admin/home";
-			} else if (user.getRole().getName().equals("customer")) {
-				if (cart != null) {
-					model.addAttribute("user", user);
-					session.setAttribute("user1", user);
-					session.setAttribute("mycart", cart);
-					System.out.println("Cart: " + cart.size());
-					return "customer/order";
-				} else {
-					session.setAttribute("user1", user);
-					return "redirect:/home";
+			if (user.getStatus()){
+				if (user.getRole().getName().equals("admin")) {
+					session.setAttribute("user2", user);
+					return "admin/home";
+				} else if (user.getRole().getName().equals("customer")) {
+					if (cart != null) {
+						model.addAttribute("user", user);
+						session.setAttribute("user1", user);
+						session.setAttribute("mycart", cart);
+						System.out.println("Cart: " + cart.size());
+						return "customer/order";
+					} else {
+						session.setAttribute("user1", user);
+						return "redirect:/home";
+					}
 				}
+			}else {
+				model.addAttribute("loginMesage","Tài khoản của bạn đã bị khóa!");
+				return "login";
 			}
 		} else {
+			model.addAttribute("loginMesage","Tài khoản hoặc mật khẩu không chính xác!");
 			return "login";
 		}
 		return null;

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import shoes.entities.Category;
+import shoes.entities.Producer;
 import shoes.entities.Product;
 import shoes.services.category.CategoryService;
 import shoes.services.order.OrderService;
@@ -45,7 +46,7 @@ public class AdminController {
 	@GetMapping("/product")
 	public ModelAndView productPage() {
 		ModelAndView m = new ModelAndView("admin/product");
-		m.addObject("productList", productService.findAll());
+		m.addObject("productList", productService.findAndSortById());
 		return m;
 	}
 	
@@ -65,13 +66,13 @@ public class AdminController {
 	@GetMapping("/category")
 	public ModelAndView categoryPage() {
 		ModelAndView m = new ModelAndView("admin/category");
-		m.addObject("categoryList", categoryService.findAll());
+		m.addObject("categoryList", categoryService.findAndSortById());
 		return m;
 	}
 	@GetMapping("/order")
 	public ModelAndView orderPage() {
 		ModelAndView m = new ModelAndView("admin/order");
-		m.addObject("orderList", orderService.findAll());
+		m.addObject("myOrder", orderService.findAll());
 		return m;
 	}
 	@GetMapping("/viewbyCategory/{id}")
@@ -79,6 +80,14 @@ public class AdminController {
 		ModelAndView m = new ModelAndView("admin/product");
 		Category category = categoryService.findById(id);
 		List<Product> productList = productService.findByCategory(category);
+		m.addObject("productList", productList);
+		return m;
+	}
+	@GetMapping("/viewbyProducer/{id}")
+	public ModelAndView viewbyProducerPage(@PathVariable int id) {
+		ModelAndView m = new ModelAndView("admin/product");
+		Producer producer = producerService.findById(id);
+		List<Product> productList = productService.findByProducer(producer);
 		m.addObject("productList", productList);
 		return m;
 	}

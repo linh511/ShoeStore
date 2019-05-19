@@ -37,6 +37,11 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 
 	@Override
+	public List<Category> findAndSortById() {
+		return categoryRepository.findCategoryAndSort();
+	}
+
+	@Override
 	public boolean delete(Category t) {
 		try {
 			categoryRepository.delete(t);
@@ -46,9 +51,8 @@ public class CategoryServiceImpl implements CategoryService{
 			return false;
 		}
 	}
-
-
-	
-
-
+	@Override
+	public Category findCategoryByName(String name) {
+		return categoryRepository.findCategoryByName(name);
+	}
 }

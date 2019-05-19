@@ -90,6 +90,6 @@
 			</div>
 		</div>
 		</div>
+	<jsp:include page="includes/script.jsp"/>
 </body>
-<jsp:include page="includes/script.jsp"/>
 </html>

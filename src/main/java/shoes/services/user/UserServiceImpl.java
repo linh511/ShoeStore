@@ -25,8 +25,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User create(User t) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.save(t);
 	}
 
 	@Override
@@ -45,6 +44,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findUserByUsernameAndPassword(String username, String password) {
 		return userRepository.findUserByUsernameAndPassword(username, password);
+	}
+
+	@Override
+	public User findUserByUsername(String username) {
+		return userRepository.findUserByUsername(username);
 	}
 
 }

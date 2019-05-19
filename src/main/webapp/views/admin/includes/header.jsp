@@ -12,13 +12,13 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i
 						class="ti-user"></i>
-						<p>
-							<font color="red">Xin chào, ${sessionScope.user1.username} </font>
+						<p style="color: red">
+							Xin chào, ${sessionScope.user2.username}
 						</p>
 				</a></li>
 				<li>
 				<%
-				if( session.getAttribute("user1") == null){
+				if( session.getAttribute("user2") == null){
 					session.setAttribute("href","login");
 					session.setAttribute("action", "Đăng nhập");
 				}else{

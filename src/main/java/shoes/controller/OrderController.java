@@ -1,5 +1,7 @@
 package shoes.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -55,7 +57,6 @@ public class OrderController {
 			Cart cart = (Cart) session.getAttribute("cart");
 			model.addAttribute("user", user);
 			session.setAttribute("user1", user);
-			System.out.println("Tên thành viên:" + user.getFullname());
 			session.setAttribute("mycart", cart);
 			return "customer/order";
 		}
@@ -82,12 +83,13 @@ public class OrderController {
 		System.out.println("Tao order");
 		
 		//OrderList
-		OrderList o = new OrderList();
 		cart.forEach((key, value)->{
+			OrderList o = new OrderList();
         	o.setOrder(order);
         	o.setMoney((double) (value.getQuantity()*value.getProduct().getUnitPrice()));
         	o.setProduct(productService.findById(key));
         	o.setQuantity(value.getQuantity());
+			System.out.println(key +":"+ value);
         	orderListService.create(o);
 		});
 		
@@ -107,7 +109,8 @@ public class OrderController {
 	@GetMapping("/edit/{id}")
 	public String editOrder(@PathVariable int id, ModelMap model) {
 		List<OrderStatus> statusList = orderStatusService.findAll();
-		model.addAttribute("orderStatus", new OrderStatus());
+		Order order = orderService.findById(id);
+		model.addAttribute("order", order);
 		model.addAttribute("statusList", statusList);
 		return "admin/editOrder";
 	}
@@ -115,15 +118,13 @@ public class OrderController {
 	@GetMapping("/delete/{id}")
 	public String deleteOrder(@PathVariable int id, ModelMap model) {
 		Order order = orderService.findById(id);
+		orderListService.deleteOrderList(order);
 		orderService.delete(order);
-		List<Order> orderList = orderService.findAll();
-		model.addAttribute("orderList", orderList);
-		return "admin/order";
+		return "redirect:/admin/order";
 	}
 	@PostMapping("/save")
-	public String saveOrder(@Valid @ModelAttribute("order") Order order, ModelMap model) {
-		List<Order> orderList = orderService.findAll();
-		model.addAttribute("orderList", orderList);
-		return "admin/order";
+	public String saveOrder(@ModelAttribute("order") Order order, ModelMap model) {
+		orderService.create(order);
+		return "redirect:/admin/order";
 	}
 }

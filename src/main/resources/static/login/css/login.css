@@ -12,9 +12,25 @@ html {
 	background-color: #FFFFFF;
 	transform: translate(-50%, -50%);
 }
+.centeredx {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	padding: 40px;
+	background-color: #FFFFFF;
+	transform: translate(-50%, -50%);
+}
 
 @media screen and (min-width: 980px) {
 	.centered {
 		max-width: 567px;
 	}
+	.centeredx {
+		max-width: 850px;
+	}
+}
+.myMessage{
+	font-size: 15px;
+	font-style: italic;
+	color: red;
 }

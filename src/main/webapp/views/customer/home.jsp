@@ -73,9 +73,7 @@
 									</div>
 									<div class="add-cart">
 										<h4>
-											<a
-												href="/ShoeAssignment/product?action=preview&id=${product.id}">Chi
-												tiết</a>
+											<a href = "${pageContext.servletContext.contextPath}/product/view/${product.id}">Chi tiết</a>
 										</h4>
 									</div>
 								</div>

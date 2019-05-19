@@ -43,10 +43,20 @@ public class CategoryController {
 	
 	@PostMapping("/save")
 	public String saveCategory(@Valid @ModelAttribute("category") Category category, ModelMap model) {
-		categoryService.create(category);
-		List<Category> categoryList = categoryService.findAll();
-		model.addAttribute("categoryList", categoryList);
-		return "admin/category";
+		Category category1 = categoryService.findCategoryByName(category.getName().trim());
+		if(category1==null){
+			categoryService.create(category);
+			return "redirect:/admin/category";
+		}else {
+			if(category.getId()!=null){
+				categoryService.create(category);
+				return "redirect:/admin/category";
+			}else {
+				model.addAttribute("message", "Loại sản phẩm này đã tồn tại!");
+				return "admin/addCategory";
+			}
+		}
+
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -55,11 +65,13 @@ public class CategoryController {
 		List<Product> productList = productService.findByCategory(category);
 		if(productList.size()>0) {
 			model.addAttribute("message", "Danh mục này có sản phẩm. Không thể xóa!");
+			List<Category> categoryList = categoryService.findAll();
+			model.addAttribute("categoryList", categoryList);
+			return "admin/category";
 		}else {
 			categoryService.delete(category);
+			return "redirect:/admin/category";
 		}
-		List<Category> categoryList = categoryService.findAll();
-		model.addAttribute("categoryList", categoryList);
-		return "admin/category";
+
 	}
 }

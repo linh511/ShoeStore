@@ -22,17 +22,16 @@
 									<h3 class="title">Danh Sách Thành Viên</h3>
 								</div>
 								<div class="header">
-									<a href="addCustomer.jsp" class="btn btn-info btn-fill btn-wd">Thêm mới</a>
+									<a href="${pageContext.servletContext.contextPath}/register" class="btn btn-info btn-fill btn-wd">Thêm mới</a>
 								</div>
 								<div class="content table-responsive table-full-width">
 									<table class="table table-hover">
 										<thead>
 											<th>ID</th>
 											<th>Tài Khoản</th>
-											<th>Họ và tên</th>
-											<th>Vai trò</th>
-											<th>Email</th>
-											<th>Địa chỉ</th>
+											<th>Khách Hàng</th>
+											<th>Quyền</th>
+											<th>Trạng thái</th>
 											<th style="padding-left: 40px">Hành động</th>
 										</thead>
 										<tbody>
@@ -42,15 +41,18 @@
 													<td><c:out value="${user.username}" /></td>
 													<td><c:out value="${user.fullname}" /></td>
 													<td><c:out value="${user.role.name}" /></td>
-													<td><c:out value="${user.email}" /></td>
-													<td><c:out value="${user.address}" /></td>
-													<td><input type="submit" class="btn btn-success btn-fill" style="width: 70px"
-														name="productAction" value="Sửa"> <%-- <a class="btn btn-default btn-block" style="width: 70px" href="/edit?id=<c:out value='${product.id}' />">Sửa</a>
-													<a class="btn btn-default btn-block"  style="width: 70px" href="/delete?id=<c:out value='${product.id}' />">Xóa</a> --%>
-														<input type="submit" class="btn btn-danger btn-fill" style="width: 70px"
-														name="productAction" value="Xóa"></td>
-												</tr>
+													<c:choose>
+														<c:when test = "${user.status == true}">
+															<c:set var="status" value="Hoạt động"></c:set>
+														</c:when>
 
+														<c:when test = "${user.status == false}">
+															<c:set var="status" value="Tạm ngưng"></c:set>
+														</c:when>
+													</c:choose>
+													<td><c:out value="${status}" /></td>
+													<td> <a class="btn btn-danger btn-fill" href = "${pageContext.request.contextPath}/admin/user/detail/${user.id}">Thay đổi trạng thái</a></td>
+												</tr>
 											</c:forEach>
 										</tbody>
 									</table>
@@ -65,5 +67,4 @@
 		</div>
 	</div>
 </body>
-<jsp:include page="includes/script.jsp"/>
 </html>

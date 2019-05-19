@@ -42,13 +42,13 @@ public class HomeControler {
 
     @GetMapping("/about")
     public ModelAndView goAbout() {
-        ModelAndView m = new ModelAndView("#");
+        ModelAndView m = new ModelAndView("customer/about");
         return m;
     }
 
     @GetMapping("/contact")
     public ModelAndView goContact() {
-        ModelAndView m = new ModelAndView("#");
+        ModelAndView m = new ModelAndView("customer/contact");
         return m;
     }
 

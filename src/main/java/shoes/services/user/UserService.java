@@ -8,4 +8,6 @@ import shoes.services.BaseService;
 @Service
 public interface UserService extends BaseService<User, Integer> {
 	User findUserByUsernameAndPassword(String username, String password);
+
+	User findUserByUsername(String username);
 }

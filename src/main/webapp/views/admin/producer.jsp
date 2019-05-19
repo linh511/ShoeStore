@@ -22,15 +22,17 @@
 									<h3 class="title">Danh Sách Hãng Sản Xuất</h3>
 								</div>
 								<div class="header">
-									<a class="btn btn-info btn-fill" href = "/ShoeAssignment/adminProducer?action=new">Thêm mới</a>
+									<a class="btn btn-info btn-fill" href = "${pageContext.servletContext.contextPath}/admin/producer/add">Thêm mới</a>
 								</div>
+								<br>
+								<span class="messageError">${message }</span>
 								<div class="content table-responsive table-full-width">
-								    <h4 style="color: red; font-style: italic;">${message }</h4>
 									<table class="table table-hover">
 										<thead>
 											<th>ID</th>
 											<th>Tên Nhà Sản Xuất</th>
 											<th>Logo</th>
+											<th>Trạng thái</th>
 											<th>Sản phẩm</th>
 											<th style="padding-left: 40px">Hành động</th>
 										</thead>
@@ -40,10 +42,24 @@
 													<td><c:out value="${producer.id}" /></td>
 													<td><c:out value="${producer.name}" /></td>
 													<td><c:out value="${producer.logo}" /></td>
-													<td><a style="color: red; font-style: italic;" href="admin/viewbyProducer/${producer.id}">Xem sản phẩm</a></td>
-													<td><a class="btn btn-success btn-fill" href = "/ShoeAssignment/adminProducer?action=update&id=${producer.id}">Sửa</a>
-													<a class="btn btn-danger btn-fill" href = "/ShoeAssignment/adminProducer?action=delete&id=${producer.id}" onclick="return confirm('Bạn có muốn xóa?')">Xóa</a>
-												</tr>
+													<c:choose>
+
+													<c:when test = "${producer.id == 1}">
+													<c:set var="status" value="Hoạt động"></c:set>
+													</c:when>
+
+													<c:when test = "${producer.id == 2}">
+														<c:set var="status" value="Tạm ngừng"></c:set>
+													</c:when>
+
+													<c:otherwise>
+														<c:set var="status" value="Đang xét"></c:set>
+													</c:otherwise>
+													</c:choose>
+													<td><c:out value="${status}"/></td>
+													<td><a style="color: red; font-style: italic;" href="${pageContext.request.contextPath}/admin/viewbyProducer/${producer.id}">Xem sản phẩm</a></td>
+													<td><a class="btn btn-success btn-fill" href = "${pageContext.request.contextPath}/admin/producer/edit/${producer.id}">Sửa</a>
+														<a class="btn btn-danger btn-fill" href = "${pageContext.request.contextPath}/admin/producer/delete/${producer.id}" onclick="return confirm('Bạn có muốn xóa?')">Xóa</a>
 											</c:forEach>
 										</tbody>
 									</table>
@@ -59,5 +75,4 @@
 	</div>
 </body>
 
-<jsp:include page="includes/script.jsp"/>
 </html>

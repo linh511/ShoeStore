@@ -36,7 +36,7 @@
 											<th style="padding-left: 40px">Hành động</th>
 										</thead>
 										<tbody>
-											<c:forEach var="order" items="${orderList}">
+											<c:forEach var="order" items="${myOrder}">
 												<tr>
 													<td><c:out value="${order.id}" /></td>
 													<td><c:out value="${order.user.fullname}" /></td>
@@ -47,7 +47,7 @@
 													<td><c:out value="${order.date}" /></td>
 													<td><c:out value="${order.orderStatus.name}" /></td>
 													<td><a class="btn btn-success btn-fill" href = "${pageContext.servletContext.contextPath}/order/edit/${order.id}">Sửa</a>
-													<a class="btn btn-danger btn-fill" href = "${pageContext.servletContext.contextPath}/order/delete/${order.id}" onclick="return confirm('Bạn có muốn xóa?')">Xóa</a>
+													<a class="btn btn-danger btn-fill" href = "${pageContext.servletContext.contextPath}/order/delete/${order.id}" onclick="return confirm('Bạn có muốn hủy bỏ đơn hàng?')">Hủy</a>
 													</td>
 												</tr>
 											</c:forEach>
@@ -65,5 +65,4 @@
 	</div>
 </body>
 
-<jsp:include page="includes/script.jsp"/>
 </html>

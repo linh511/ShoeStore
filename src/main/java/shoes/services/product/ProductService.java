@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import shoes.entities.Category;
+import shoes.entities.Producer;
 import shoes.entities.Product;
 import shoes.services.BaseService;
 
@@ -17,5 +18,9 @@ public interface ProductService extends BaseService<Product, Integer> {
 	
 	List<Product> findByCategory (Category category);
 
+	List<Product> findByProducer (Producer producer);
+
 	List<Product> findByPageAble (Pageable pageable);
+
+	Product checkProductName(String name);
 }

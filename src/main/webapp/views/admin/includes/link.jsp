@@ -10,17 +10,12 @@
 
 <!-- Bootstrap core CSS     -->
 <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet" />
-
 <!-- Animation library for notifications   -->
 <link href="${pageContext.request.contextPath}/assets/css/animate.min.css" rel="stylesheet" />
-
 <!--  Paper Dashboard core CSS    -->
 <link href="${pageContext.request.contextPath}/assets/css/paper-dashboard.css" rel="stylesheet" />
-
-
 <!--  CSS for Demo Purpose, don't include it in your project     -->
 <link href="${pageContext.request.contextPath}/assets/css/demo.css" rel="stylesheet" />
-
 
 <!--  Fonts and icons     -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"

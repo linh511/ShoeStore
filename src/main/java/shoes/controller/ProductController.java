@@ -26,52 +26,55 @@ import shoes.services.product.ProductService;
 @RequestMapping("/admin/product")
 public class ProductController {
 
-	@Autowired
-	private ProductService productService;
-	@Autowired
-	private CategoryService categoryService;
-	@Autowired
-	private ProducerService producerService;
+    @Autowired
+    private ProductService productService;
+    @Autowired
+    private CategoryService categoryService;
+    @Autowired
+    private ProducerService producerService;
 
-	@GetMapping("/add")
-	public String productPage(ModelMap model) {
-		List<Category> categories = categoryService.findAll();
-		List<Producer> producers = producerService.findAll();
-		model.addAttribute("product", new Product());
-		model.addAttribute("categoryList", categories);
-		model.addAttribute("producerList", producers);
-		return "admin/addProduct";
-	}
-	@GetMapping("/edit/{id}")
-	public String edit(@PathVariable int id, Model model) {
-		List<Category> categories = categoryService.findAll();
-		List<Producer> producers = producerService.findAll();
-		model.addAttribute("categoryList", categories);
-		model.addAttribute("producerList", producers);
-		Product product = productService.findById(id);
-		model.addAttribute("product",product);
-		return "admin/addProduct";
-	}
-	
-	@PostMapping("/save")
-	public String saveProduct(@Valid @ModelAttribute("product") Product product, ModelMap model) {
-		productService.create(product);
-		List<Product> productList = productService.findAndSortById();
-		model.addAttribute("productList", productList);
-		return "admin/product";
-	}
+    @GetMapping("/add")
+    public String productPage(ModelMap model) {
+        List<Category> categories = categoryService.findAll();
+        List<Producer> producers = producerService.findAll();
+        model.addAttribute("product", new Product());
+        model.addAttribute("categoryList", categories);
+        model.addAttribute("producerList", producers);
+        return "admin/addProduct";
+    }
 
-	@GetMapping("/update")
-	public String createProduct(Model model) {
-		return "admin/addProduct";
-	}
-	
-	@GetMapping("/delete/{id}")
-	public String savdddProduct(@PathVariable int id, Model model) {
-		Product product = productService.findById(id);
-		productService.delete(product);
-		List<Product> productList = productService.findAll();
-		model.addAttribute("productList", productList);
-		return "admin/product";
-	}
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable int id, Model model) {
+        List<Category> categories = categoryService.findAll();
+        List<Producer> producers = producerService.findAll();
+        model.addAttribute("categoryList", categories);
+        model.addAttribute("producerList", producers);
+        Product product = productService.findById(id);
+        model.addAttribute("product", product);
+        return "admin/addProduct";
+    }
+
+    @PostMapping("/save")
+    public String saveProduct(@Valid @ModelAttribute("product") Product product, ModelMap model) {
+        Product product1 = productService.checkProductName(product.getName().trim());
+        if (product1 == null) {
+            productService.create(product);
+            return "redirect:/admin/product";
+        } else {
+            if (product.getId() != null) {
+                productService.create(product);
+                return "redirect:/admin/product";
+            } else {
+                model.addAttribute("message", "Tên sản phẩm đã tồn tại!");
+                return "admin/addProduct";
+            }
+        }
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable int id, Model model) {
+        Product product = productService.findById(id);
+        productService.delete(product);
+        return "redirect:/admin/product";
+    }
 }

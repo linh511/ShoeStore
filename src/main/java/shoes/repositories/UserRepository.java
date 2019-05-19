@@ -9,7 +9,9 @@ import shoes.entities.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
-  String FIND_USER = "Select u From User u where u.username =:username and u.password = :password";
-  @Query(FIND_USER)
+  @Query("Select u From User u where u.username =:username and u.password = :password")
   User findUserByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
+
+  @Query("Select u From User u where u.username =:username")
+  User findUserByUsername (@Param("username") String username);
 }

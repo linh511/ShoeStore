@@ -11,12 +11,16 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import shoes.entities.Category;
+import shoes.entities.Producer;
 import shoes.entities.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer>{
 	@Query("From Product p where p.name like :search")
 	List<Product> findProductByName (@Param("search") String name);
+
+	@Query("Select p From Product p where p.name =:name")
+	Product checkProductName (@Param("name") String name);
 	
 	@Query("Select p From Product p")
 	List<Product> findProductByPageAble(Pageable pageable);
@@ -27,4 +31,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
 	@Query("FROM Product p where p.category = :category")
 	List<Product> findProductByCategory(@Param("category") Category category);
 
+	@Query("FROM Product p where p.producer = :producer")
+	List<Product> findProductByProducer(@Param("producer") Producer producer);
 }

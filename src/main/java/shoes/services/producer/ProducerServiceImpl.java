@@ -26,8 +26,7 @@ public class ProducerServiceImpl implements ProducerService{
 
 	@Override
 	public Producer create(Producer t) {
-		// TODO Auto-generated method stub
-		return null;
+		return producerRepository.save(t);
 	}
 
 	@Override
@@ -38,8 +37,17 @@ public class ProducerServiceImpl implements ProducerService{
 
 	@Override
 	public boolean delete(Producer t) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			producerRepository.delete(t);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
+	@Override
+	public Producer findProducerByName(String name) {
+		return producerRepository.findProducerByName(name);
+	}
 }

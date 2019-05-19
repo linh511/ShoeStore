@@ -1,6 +1,8 @@
 package shoes.entities;
 // Generated Feb 23, 2019 10:05:53 AM by Hibernate Tools 5.0.6.Final
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -78,7 +80,7 @@ public class Order implements java.io.Serializable {
 		this.user = user;
 	}
 
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@Column(name = "date", length = 10)
 	public Date getDate() {
 		return this.date;

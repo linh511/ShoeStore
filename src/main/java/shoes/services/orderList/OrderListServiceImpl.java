@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.transaction.annotation.Transactional;
 import shoes.entities.Order;
 import shoes.entities.OrderList;
 import shoes.repositories.OrderListRepository;
 
 @Service
+@Transactional
 public class OrderListServiceImpl implements OrderListService{
 
 	@Autowired
@@ -40,6 +42,15 @@ public class OrderListServiceImpl implements OrderListService{
 	public boolean delete(OrderList t) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void deleteOrderList(Order order) {
+		try {
+			orderListRepository.deleteOrderList(order);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
